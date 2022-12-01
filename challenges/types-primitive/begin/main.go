@@ -1,18 +1,31 @@
 // challenges/types-primitive/begin/main.go
 package main
 
+import (
+	"fmt"
+	"time"
+)
+
 // use type inference to create a package-level variable "val" and assign it a value of "global"
 
 func main() {
-	// create a local variable "val" and assign it an int value
+	// Defining duration parameter of AfterFunc() method
+	DurationOfTime := time.Duration(3) * time.Second
 
-	// print the value of the local variable "val"
+	fmt.Println("====== Begin ======")
+	// Defining function parameter of AfterFunc() method
+	f := func() {
+		// Printed when its called by the AfterFunc() method in the time stated above
+		fmt.Println("Function called by AfterFunc() after 3 seconds")
+	}
 
-	// print the value of the package-level variable "val"
+	// Calling AfterFunc() method with its parameter
+	Timer1 := time.AfterFunc(DurationOfTime, f)
 
-	// update the package-level variable "val" and print it again
+	// Calling stop method w.r.to Timer1
+	defer Timer1.Stop()
 
-	// print the pointer address of the local variable "val"
-
-	// assign a value directly to the pointer address of the local variable "val" and print the value of the local variable "val"
+	// Calling sleep method
+	time.Sleep(10 * time.Second)
+	fmt.Println("====== End ======")
 }
